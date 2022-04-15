@@ -13,7 +13,8 @@ module.exports = {
     SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
-    project: 'tsconfig.json',
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
     ecmaFeatures: {
       jsx: true,
     },
@@ -38,4 +39,13 @@ module.exports = {
     'jsx-quotes': 'off',
     'react/jsx-one-expression-per-line': 'off',
   },
+   overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+       plugins: ['@typescript-eslint/parser', './tsconfig.json'],
+       rules: {
+        '@typescript-eslint/no-floating-promises': "error",
+      }
+    },
+  ],
 };
